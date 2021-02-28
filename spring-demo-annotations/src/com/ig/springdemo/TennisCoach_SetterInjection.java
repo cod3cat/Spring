@@ -2,16 +2,18 @@
 package com.ig.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TennisCoach_SetterInjection implements Coach {
 
 	@Autowired
+	@Qualifier("happyFortuneService")
 	private FortuneService fortuneService;
 	
-	public TennisCoach_SetterInjection() {
-		
+ 	public TennisCoach_SetterInjection() {
+		System.out.println("Inside default constructor");
 	}
 	
 	/*@Autowired
