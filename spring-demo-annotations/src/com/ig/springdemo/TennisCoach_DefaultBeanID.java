@@ -1,13 +1,14 @@
 
 package com.ig.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
 public class TennisCoach_DefaultBeanID implements Coach {
 
 	private FortuneService fortuneService;
@@ -26,6 +27,18 @@ public class TennisCoach_DefaultBeanID implements Coach {
 	public String getDailyFortune() {
 		// TODO Auto-generated method stub
 		return fortuneService.getFortune();
+	}
+	
+	//define init method
+	@PostConstruct
+	public void doMyStartupStuff() {
+		System.out.println("Startup stuff");
+	}
+	
+	//defin destroy method
+	@PreDestroy
+	public void doMyDestroyStuff() {
+		System.out.println("Destroy stuff");
 	}
 
 }
